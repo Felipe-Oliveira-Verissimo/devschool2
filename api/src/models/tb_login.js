@@ -1,34 +1,35 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class tb_matricula extends Model {
+export default class tb_login extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_matricula: {
+    id_usuario: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      comment: "primary key"
     },
-    nm_aluno: {
-      type: DataTypes.STRING(400),
+    nm_usuario: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    nr_chamada: {
-      type: DataTypes.INTEGER,
+    ds_login: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    nm_curso: {
-      type: DataTypes.STRING(400),
+    ds_senha: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    nm_turma: {
-      type: DataTypes.STRING(400),
+    img_usuario: {
+      type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'tb_matricula',
+    tableName: 'tb_login',
     timestamps: false,
     indexes: [
       {
@@ -36,11 +37,11 @@ export default class tb_matricula extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_matricula" },
+          { name: "id_usuario" },
         ]
       },
     ]
   });
-  return tb_matricula;
+  return tb_login;
   }
 }
